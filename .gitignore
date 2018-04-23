@@ -1,1 +1,4 @@
+# Django
+db.sqlite3
 /typereact/settings.py
+/typereact/__pycache__
