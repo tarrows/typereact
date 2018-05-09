@@ -2,3 +2,6 @@
 db.sqlite3
 /typereact/settings.py
 /typereact/__pycache__
+
+assets/bundles/*
+!.gitkeep
