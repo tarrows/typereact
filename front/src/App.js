@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import TypeReact from "./components/TypeReact";
+import NotFound from "./components/NotFound";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to the world</h1>
-        </header>
-        <p className="App-intro">
-          Now this React app is integrated with Django as a backend. <br />
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={TypeReact} />
+        <Route component={NotFound} />
+      </Switch>
+      </BrowserRouter>
     );
   }
 }
