@@ -13,11 +13,22 @@ export const addNote = text => {
   }
 }
 
-export const updateNote = (id, text) => {
-  return {
-    type: 'UPDATE_NOTE',
-    id,
-    text
+export const updateNote = (index, text) => {
+  return (dispatch, getState) => {
+
+    let headers = {"Content-Type": "application/json"};
+    let body = JSON.stringify({text, });
+    let noteId = getState().notes[index].id;
+
+    return fetch(`/api/notes/${noteId}/`, {headers, method: "PUT", body})
+      .then(res => res.json())
+      .then(note => {
+        return dispatch({
+          type: 'UPDATE_NOTE',
+          note,
+          index
+        })
+      })
   }
 }
 

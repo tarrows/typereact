@@ -79,7 +79,7 @@ const mapDispatchToProps = dispatch => {
       return dispatch(notes.addNote(text));
     },
     updateNote: (id, text) => {
-      dispatch(notes.updateNote(id, text));
+      return dispatch(notes.updateNote(id, text));
     },
     deleteNote: (id) => {
       dispatch(notes.deleteNote(id));
