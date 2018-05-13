@@ -32,10 +32,21 @@ export const updateNote = (index, text) => {
   }
 }
 
-export const deleteNote = id => {
-  return {
-    type: 'DELETE_NOTE',
-    id
+export const deleteNote = index => {
+  return (dispatch, getState) => {
+
+    let headers = {"Content-Type": "application/json"};
+    let noteId = getState().notes[index].id;
+
+    return fetch(`/api/notes/${noteId}/`, {headers, method: "DELETE"})
+      .then(res => {
+        if (res.ok) {
+          return dispatch({
+            type: 'DELETE_NOTE',
+            index
+          })
+        }
+      })
   }
 }
 

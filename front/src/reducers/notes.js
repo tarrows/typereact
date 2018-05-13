@@ -15,7 +15,7 @@ export default function notes(state=initialState, action) {
       return noteList;
 
     case 'DELETE_NOTE':
-      noteList.splice(action.id, 1);
+      noteList.splice(action.index, 1);
       return noteList;
 
     case 'FETCH_NOTES':
