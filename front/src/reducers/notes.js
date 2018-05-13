@@ -6,7 +6,7 @@ export default function notes(state=initialState, action) {
 
   switch (action.type) {
     case 'ADD_NOTE':
-      return [...state, {text: action.text}];
+      return [...state, action.note];
 
     case 'UPDATE_NOTE':
       let noteToUpdate = noteList[action.id]

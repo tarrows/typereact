@@ -1,7 +1,15 @@
 export const addNote = text => {
-  return {
-    type: 'ADD_NOTE',
-    text
+  return dispatch => {
+    let headers = {"Content-Type": "application/json"};
+    let body = JSON.stringify({text, });
+    return fetch("/api/notes/", {headers, method: "POST", body})
+      .then(res => res.json())
+      .then(note => {
+        return dispatch({
+          type: 'ADD_NOTE',
+          note
+        })
+      })
   }
 }
 
