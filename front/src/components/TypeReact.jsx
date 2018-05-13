@@ -28,6 +28,10 @@ export class TypeReact extends Component {
     this.resetForm();
   }
 
+  componentDidMount() {
+    this.props.fetchNotes();
+  }
+
   render() {
     return (
       <div>
@@ -80,6 +84,9 @@ const mapDispatchToProps = dispatch => {
     },
     deleteNote: (id) => {
       dispatch(notes.deleteNote(id));
+    },
+    fetchNotes: () => {
+      dispatch(notes.fetchNotes());
     },
   }
 }

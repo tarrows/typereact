@@ -19,3 +19,18 @@ export const deleteNote = id => {
     id
   }
 }
+
+export const fetchNotes = () => {
+  return dispatch => {
+    let headers = {"Content-Type": "application/json"};
+    return fetch("/api/notes/", {headers, })
+      .then(res => res.json())
+      .then(notes => {
+        console.log(notes);
+        return dispatch({
+          type: 'FETCH_NOTES',
+          notes
+        })
+      })
+  }
+}
