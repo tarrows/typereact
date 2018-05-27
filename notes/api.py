@@ -3,14 +3,18 @@ from rest_framework.response import Response
 
 from knox.models import AuthToken
 
-from .models import Note
 from .serializers import NoteSerializer, CreateUserSerializer, UserSerializer, LoginUserSerializer
 
 
 class NoteViewSet(viewsets.ModelViewSet):
-    queryset = Note.objects.all()
-    permission_classes = [permissions.AllowAny, ]
+    permission_classes = [permissions.IsAuthenticated, ]
     serializer_class = NoteSerializer
+
+    def get_queryset(self):
+        return self.request.user.notes.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class RegistrationAPI(generics.GenericAPIView):
