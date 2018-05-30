@@ -11,6 +11,7 @@ import typeApp from "./reducers";
 import TypeReact from "./components/TypeReact";
 import NotFound from "./components/NotFound";
 import Login from "./components/Login";
+import Register from "./components/Register";
 
 let store = createStore(typeApp, applyMiddleware(thunk));
 
@@ -39,6 +40,7 @@ class RootContainerComponent extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={TypeReact} />
+          <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route component={NotFound} />
         </Switch>
