@@ -36,6 +36,9 @@ export class TypeReact extends Component {
       <div>
         <h2>Welcome to TypeReact!</h2>
         <hr />
+        <div style={{textAlign: "right"}}>
+          {this.props.user.username} (<a onCLick={this.props.logout}>logout</a>)
+        </div>
 
         <h3>Add new note</h3>
         <form onSubmit={this.submitNote}>
@@ -70,6 +73,7 @@ export class TypeReact extends Component {
 const mapStateToProps = state => {
   return {
     notes: state.notes,
+    user: state.auth.user,
   }
 }
 
@@ -87,6 +91,7 @@ const mapDispatchToProps = dispatch => {
     fetchNotes: () => {
       dispatch(notes.fetchNotes());
     },
+    logout: () => dispatch(auth.logout()),
   }
 }
 
